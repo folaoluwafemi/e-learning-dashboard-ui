@@ -10,6 +10,9 @@ abstract class AppButton {
     double height = 50,
     double width = 327,
     bool center = true,
+    bool shrink = false,
+    bool shrinkWidth = false,
+    bool shrinkHeight = false,
     double radius = 8,
     bool loading = false,
     Color color = AppColors.purple,
@@ -18,20 +21,32 @@ abstract class AppButton {
     Key? key,
   }) =>
       SizedBox(
-        width: width,
-        height: height,
+        width: shrink
+            ? null
+            : shrinkWidth
+                ? null
+                : width,
+        height: shrink
+            ? null
+            : shrinkHeight
+                ? null
+                : height,
         child: MaterialButton(
           elevation: elevation,
+          hoverElevation: elevation,
+          hoverColor: color,
           color: color,
           highlightElevation: elevation,
           shape: RoundedRectangleBorder(
             borderRadius: Ui.circularRadius(radius),
           ),
           disabledElevation: 0,
-          onPressed: disabled ? null : onPressed,
+          onPressed: onPressed,
           padding: padding,
           child: loading
-              ? const Center(child: CircularProgressIndicator())
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
               : center
                   ? Center(child: child)
                   : child,

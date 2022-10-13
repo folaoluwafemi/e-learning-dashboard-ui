@@ -28,6 +28,9 @@ abstract class AppColors {
   ///#FFFFFF
   static const Color white = Color(0xFFFFFFFF);
 
+  ///#FFFFFF 0%
+  static const Color transparent = Color(0x00FFFFFF);
+
   ///#F9F9F9
   static const Color white200 = Color(0xFFF9F9F9);
 
